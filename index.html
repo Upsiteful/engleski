@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profesor Engleskog — Privatni časovi | [Ime i Prezime]</title>
+  <meta name="description" content="Privatni časovi engleskog jezika (online i uživo), priprema za IELTS/TOEFL/Cambridge, konverzacijski i poslovni engleski. Rezervišite termin danas."/>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0f1223;          /* tamna pozadina za elegantan look */
+      --bg-soft: #151936;     /* meka kart pozadina */
+      --text: #e8ebff;        /* osnovni tekst */
+      --muted: #b7c0ff;       /* sekundarni tekst */
+      --brand: #7c9cff;       /* akcent boja */
+      --brand-2: #66e3ff;     /* dodatni akcent */
+      --accent: #c8ff80;      /* CTA highlight */
+      --danger: #ff8b8b;      /* za isticanje */
+      --radius: 20px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35), 0 2px 10px rgba(0,0,0,.15);
+      --shadow-soft: 0 8px 24px rgba(0,0,0,.25);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 800px at 80% -10%, rgba(124,156,255,.18), transparent 60%),
+                  radial-gradient(800px 600px at -10% 10%, rgba(102,227,255,.12), transparent 60%),
+                  linear-gradient(180deg, #0b0e1b 0%, var(--bg) 100%);
+      line-height: 1.6;
+      letter-spacing: .2px;
+      overflow-x: hidden;
+    }
+
+    a { color: var(--brand-2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Layout helpers */
+    .container { width: min(1150px, 92%); margin: 0 auto; }
+    .grid { display: grid; gap: 24px; }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(15,18,35,.6);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(124,156,255,.12);
+    }
+    .nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 0;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing:.3px; }
+    .logo-badge {
+      width: 36px; height: 36px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      display: grid; place-items: center; box-shadow: var(--shadow-soft);
+    }
+    nav ul { display: flex; gap: 18px; list-style: none; margin: 0; padding: 0; }
+    nav a { color: var(--text); opacity:.9; font-weight: 500; padding: 10px 12px; border-radius: 12px; }
+    nav a:hover { background: rgba(124,156,255,.12); text-decoration: none; }
+
+    /* Mobile menu */
+    .menu-btn { display: none; border: 1px solid rgba(124,156,255,.25); background: transparent; color: var(--text); padding: 10px 12px; border-radius: 10px; }
+    @media (max-width: 900px){
+      nav ul { display: none; }
+      .menu-btn { display: inline-flex; align-items: center; gap: 8px; }
+      .mobile-drawer { position: fixed; inset: 64px 16px auto 16px; background: var(--bg-soft); border: 1px solid rgba(124,156,255,.18); border-radius: 16px; padding: 12px; display: none; box-shadow: var(--shadow); }
+      .mobile-drawer.open { display: block; }
+      .mobile-drawer a { display: block; padding: 12px; color: var(--text); border-radius: 12px; }
+      .mobile-drawer a:hover { background: rgba(124,156,255,.12); text-decoration: none; }
+    }
+
+    /* Buttons */
+    .btn { display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:14px; border:1px solid rgba(124,156,255,.25); background: linear-gradient(180deg, rgba(124,156,255,.15), rgba(124,156,255,.05)); color: var(--text); font-weight:600; box-shadow: var(--shadow-soft); transition: transform .15s ease, box-shadow .2s ease; }
+    .btn:hover { transform: translateY(-1px); text-decoration:none; box-shadow: 0 10px 24px rgba(124,156,255,.18); }
+    .btn-primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); border-color: transparent; color:#04131a; margin-top: 30px; margin-bottom: 30px; }
+    .btn-primary:hover { box-shadow: 0 10px 28px rgba(102,227,255,.35); }
+    .btn-ghost { background: rgba(124,156,255,.12); }
+
+    /* Hero */
+    .hero { position: relative; padding: 80px 0 60px; }
+    .hero .container { display: grid; grid-template-columns: 1.2fr .8fr; align-items: center; gap: 36px; }
+    .eyebrow { display:inline-block; font-size:.9rem; padding:6px 10px; border-radius:12px; background: rgba(200,255,128,.12); color: var(--accent); border:1px solid rgba(200,255,128,.35); margin-bottom: 14px; }
+    h1 { font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.1; margin: 0 0 12px; }
+    .lead { font-size: clamp(1rem, 1.5vw, 1.2rem); color: var(--muted); margin: 0 0 20px; }
+
+    .hero-card { background: rgba(21,25,54,.75); border: 1px solid rgba(124,156,255,.18); border-radius: var(--radius); padding: 16px; display: grid; grid-template-columns: 96px 1fr; gap: 14px; align-items: center; box-shadow: var(--shadow-soft); }
+    .hero-card img { width: 96px; height: 96px; object-fit: cover; border-radius: 16px; }
+
+    .hero-visual { position: relative; }
+    .hero-visual .glass {
+      position: relative; background: linear-gradient(180deg, rgba(124,156,255,.18), rgba(124,156,255,.06)); border: 1px solid rgba(124,156,255,.25);
+      border-radius: 28px; padding: 18px; box-shadow: var(--shadow);
+    }
+    .hero-visual img { width: 100%; height: auto; border-radius: 18px; display: block; }
+    .orb { position: absolute; inset: auto auto -30px -30px; width: 180px; height: 180px; background: radial-gradient(circle at 30% 30%, #b3ff9e, rgba(179,255,158,.2) 50%, transparent 60%); filter: blur(10px); opacity:.5; border-radius:50%; pointer-events:none; }
+
+    @media (max-width: 900px){
+      .hero { padding: 54px 0 34px; }
+      .hero .container { grid-template-columns: 1fr; }
+      .hero-visual { order: -1; }
+    }
+
+    /* Section styling */
+    section { padding: 60px 0; }
+    .section-title { font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin: 0 0 10px; }
+    .section-sub { color: var(--muted); margin: 0 0 24px; }
+
+    /* Cards */
+    .card { background: var(--bg-soft); border: 1px solid rgba(124,156,255,.18); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow-soft); }
+
+    /* Services */
+    .services { grid-template-columns: repeat(4, 1fr); }
+    .service h3 { margin: 10px 0 6px; }
+    .service p { color: var(--muted); margin: 0 0 8px; }
+    .chip { display:inline-block; font-size:.8rem; padding:6px 10px; border-radius:999px; background: rgba(124,156,255,.12); border: 1px solid rgba(124,156,255,.25); margin-top: 6px; }
+    @media (max-width: 1000px){ .services { grid-template-columns: repeat(2, 1fr);} }
+    @media (max-width: 600px){ .services { grid-template-columns: 1fr;} }
+
+    /* Pricing */
+    .pricing { grid-template-columns: repeat(3, 1fr); align-items: stretch; }
+    .price { font-size: 2rem; font-weight: 700; }
+    .price small { font-size: .9rem; color: var(--muted); font-weight: 500; }
+    .pricing ul { list-style: none; margin: 12px 0 0; padding: 0; color: var(--muted); }
+    .pricing li { padding: 8px 0; display: flex; align-items: center; gap: 10px; }
+    .pricing .recommended { border: 1px solid rgba(200,255,128,.45); box-shadow: 0 12px 34px rgba(200,255,128,.22); position: relative; }
+    .ribbon { position:absolute; top:-12px; right: 16px; background: var(--accent); color:#09200b; font-weight:700; padding:6px 10px; border-radius: 10px; font-size:.8rem; }
+    @media (max-width: 1000px){ .pricing { grid-template-columns: 1fr; } }
+
+    /* Testimonials */
+    .testi-wrap { position: relative; overflow: hidden; }
+    .testi-track { display: flex; gap: 20px; transition: transform .6s ease; }
+    .testi { min-width: 320px; max-width: 420px; }
+    .avatar { width: 56px; height: 56px; border-radius: 14px; object-fit: cover; }
+
+    /* FAQ */
+    .faq-item { border: 1px solid rgba(124,156,255,.2); border-radius: 14px; padding: 14px 16px; background: rgba(21,25,54,.6); }
+    .faq-q { display: flex; justify-content: space-between; align-items: center; gap: 12px; cursor: pointer; }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height .3s ease; color: var(--muted); }
+    .faq-item.open .faq-a { max-height: 200px; margin-top: 8px; }
+
+    /* Contact */
+    .contact-card { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .contact-card input, .contact-card textarea {
+      width: 100%; padding: 12px 14px; border-radius: 12px; border: 1px solid rgba(124,156,255,.25);
+      background: rgba(21,25,54,.6); color: var(--text);
+    }
+    .contact-card textarea { min-height: 120px; resize: vertical; }
+    @media (max-width: 900px){ .contact-card { grid-template-columns: 1fr; } }
+
+    /* Footer */
+    footer { padding: 28px 0; border-top: 1px solid rgba(124,156,255,.12); color: var(--muted); }
+
+    /* Reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(12px); }
+    .reveal.visible { opacity: 1; transform: none; transition: opacity .6s ease, transform .6s ease; }
+
+    /* Floating CTA (mobile) */
+    .floating { position: fixed; right: 16px; bottom: 16px; z-index: 60; }
+    /* Sakrij levi navbar na širim ekranima */
+
+ @media screen and (min-width: 768px) {
+  .dasesakrije { 
+    display: none;
+  }
+}
+
+
+
+
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <div class="logo-badge" aria-hidden="true">
+          <!-- simple book icon -->
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 4.5C5 3.67 5.67 3 6.5 3H19v15.5a1.5 1.5 0 0 1-1.5 1.5H6.5A1.5 1.5 0 0 0 5 21V4.5Z" stroke="#04131a" fill="#c8ff80" stroke-width="1.5"/>
+            <path d="M5 18h13.5" stroke="#04131a" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <span>[Ime i Prezime] — Engleski jezik</span>
+      </div>
+
+      <nav aria-label="Glavna navigacija">
+        <ul>
+          <li><a href="#services">Usluge</a></li>
+          <li><a href="#pricing">Cenovnik</a></li>
+          <li><a href="#testimonials">Utisci</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact" class="btn btn-primary">Zakaži čas</a></li>
+        </ul>
+      </nav>
+
+      <button id="menuBtn" class="menu-btn" aria-expanded="false" aria-controls="mobileMenu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Meni
+      </button>
+    </div>
+    <div id="mobileMenu" class="mobile-drawer container" role="dialog" aria-label="Mobilni meni">
+      <a href="#services" class="dasesakrije">Usluge</a>
+      <a href="#pricing" class="dasesakrije">Cenovnik</a>
+      <a href="#testimonials" class="dasesakrije">Utisci</a>
+      <a href="#faq" class="dasesakrije">FAQ</a>
+      <a href="#contact" class="btn btn-primary" style="width:100%; justify-content:center;">Zakaži čas</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div>
+        <span class="eyebrow">Individualni i online časovi</span>
+        <h1>Ubrzaj svoj napredak u engleskom — jasno, praktično i sa verom u tebe.</h1>
+        <p class="lead">Diplomirani profesor sa <strong>8+ godina iskustva</strong>. Priprema za IELTS/TOEFL/Cambridge, poslovni i konverzacijski engleski. Fleksibilni termini, personalizovani plan.</p>
+        <div style="display:flex; gap:12px; flex-wrap: wrap; margin: 18px 0 26px;">
+          <a class="btn btn-primary" href="#contact">Zakaži besplatne konsultacije</a>
+          <a class="btn btn-ghost" href="#services">Pogledaj usluge</a>
+        </div>
+        <div class="hero-card reveal">
+          <img src="images/teacher-portrait.jpg" alt="Portret profesora engleskog" />
+          <div>
+            <strong>"Najbitnije je da se osećaš sigurno dok pričaš."</strong>
+            <p class="lead" style="margin:6px 0 0; font-size: .98rem;">Na svakom času dobijaš jasne korake, konkretne fraze i feedback koji menja igru.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal">
+        <div class="glass">
+          <img src="images/study-setup.jpg" alt="Laptop, knjige i beleške na stolu za učenje engleskog" />
+        </div>
+        <div class="orb" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="container">
+      <h2 class="section-title">Usluge</h2>
+      <p class="section-sub">Izaberi format koji ti najviše odgovara. Svi programi su prilagođeni tvom cilju i tempu.</p>
+
+      <div class="grid services">
+        <article class="card service reveal">
+          <div class="chip">1-na-1</div>
+          <h3>Privatni časovi (online/uživo)</h3>
+          <p>Personalizovani plan, fokus na govor, izgovor i fraze koje stvarno koristiš.</p>
+          <ul class="pricing" style="grid-template-columns: 1fr; margin-top:10px;">
+            <li><span class="price">30€</span> <small>/ 60 min</small></li>
+          </ul>
+          <a class="btn" href="#contact">Zakaži</a>
+        </article>
+
+        <article class="card service reveal">
+          <div class="chip">Ispiti</div>
+          <h3>Priprema za IELTS / TOEFL / Cambridge</h3>
+          <p>Strategije, tipovi zadataka i simulacije testova sa povratnom informacijom.</p>
+          <ul class="pricing" style="grid-template-columns: 1fr; margin-top:10px;">
+            <li><span class="price">35€</span> <small>/ 60 min</small></li>
+          </ul>
+          <a class="btn" href="#contact">Proveri slobodne termine</a>
+        </article>
+
+        <article class="card service reveal">
+          <div class="chip">Poslovno</div>
+          <h3>Business English</h3>
+          <p>Email komunikacija, sastanci, prezentacije i pregovaranje — praktično i odmah primenljivo.</p>
+          <ul class="pricing" style="grid-template-columns: 1fr; margin-top:10px;">
+            <li><span class="price">40€</span> <small>/ 60 min</small></li>
+          </ul>
+          <a class="btn" href="#contact">Kontakt</a>
+        </article>
+
+        <article class="card service reveal">
+          <div class="chip">Deca & Tinejdžeri</div>
+          <h3>Program za mlađe</h3>
+          <p>Igre, priče i konverzacije prilagođene uzrastu, uz saradnju sa roditeljima.</p>
+          <ul class="pricing" style="grid-template-columns: 1fr; margin-top:10px;">
+            <li><span class="price">25€</span> <small>/ 45 min</small></li>
+          </ul>
+          <a class="btn" href="#contact">Zakaži</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing plans -->
+  <section id="pricing">
+    <div class="container">
+      <h2 class="section-title">Paketi</h2>
+      <p class="section-sub">Uštedi uz pakete i dobij jasno strukturiran napredak iz nedelje u nedelju.</p>
+
+      <div class="grid pricing">
+        <article class="card reveal">
+          <h3>Start</h3>
+          <p class="price">110€ <small>/ 4 časa</small></p>
+          <ul>
+            <li>✔ Plan učenja + materijali</li>
+            <li>✔ Fokus na govor</li>
+            <li>✔ Feedback posle svakog časa</li>
+          </ul>
+          <div style="margin-top: 14px;"><a class="btn" href="#contact">Izaberi</a></div>
+        </article>
+
+        <article class="card reveal recommended">
+          <div class="ribbon">Najpopularnije</div>
+          <h3>Progress</h3>
+          <p class="price">260€ <small>/ 10 časova</small></p>
+          <ul>
+            <li>✔ Individualni plan + vežbanke</li>
+            <li>✔ Konverzacijske sesije</li>
+            <li>✔ Napredak izveštaj</li>
+          </ul>
+          <div style="margin-top: 14px;"><a class="btn btn-primary" href="#contact">Izaberi</a></div>
+        </article>
+
+        <article class="card reveal">
+          <h3>Exam Pro</h3>
+          <p class="price">320€ <small>/ 10 časova</small></p>
+          <ul>
+            <li>✔ Strategije za IELTS/TOEFL/Cambridge</li>
+            <li>✔ 2 probna testa</li>
+            <li>✔ Detaljan feedback</li>
+          </ul>
+          <div style="margin-top: 14px;"><a class="btn" href="#contact">Izaberi</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+    <section id="testimonials">
+    <div class="container">
+      <h2 class="section-title">Utisci polaznika</h2>
+      <p class="section-sub">Kratki komentari onih koji su već prošli kroz program.</p>
+
+      <div class="testi-wrap card reveal">
+        <div id="testiTrack" class="testi-track">
+        
+          <article class="testi card" style="background: rgba(21,25,54,.8);">
+            <div style="display:flex; gap:12px; align-items:center;">
+              <img class="avatar" src="images/avatar-1.jpg" alt="Učenik 1" />
+              <div>
+                <strong>Marko</strong>
+                <div style="color:var(--muted); font-size:.9rem;">IELTS 7.5</div>
+              </div>
+            </div>
+            <p style="margin:10px 0 0;">„Posle mesec dana konačno pričam bez blokade. Vežbe su baš praktične.“</p>
+          </article>
+
+       
+          <article class="testi card" style="background: rgba(21,25,54,.8);">
+            <div style="display:flex; gap:12px; align-items:center;">
+              <img class="avatar" src="images/avatar-2.jpg" alt="Učenica 2" />
+              <div>
+                <strong>Jelena</strong>
+                <div style="color:var(--muted); font-size:.9rem;">Business English</div>
+              </div>
+            </div>
+            <p style="margin:10px 0 0;">„Prezentacije na engleskom su mi sada rutina. Dobile smo konkretne fraze za posao.“</p>
+          </article>
+
+      
+          <article class="testi card" style="background: rgba(21,25,54,.8);">
+            <div style="display:flex; gap:12px; align-items:center;">
+              <img class="avatar" src="images/avatar-3.jpg" alt="Učenik 3" />
+              <div>
+                <strong>Filip</strong>
+                <div style="color:var(--muted); font-size:.9rem;">TOEFL</div>
+              </div>
+            </div>
+            <p style="margin:10px 0 0;">„Jasna struktura časa i odličan feedback. Položio sam iz prvog pokušaja.“</p>
+          </article>
+
+    
+          <article class="testi card" style="background: rgba(21,25,54,.8);">
+            <div style="display:flex; gap:12px; align-items:center;">
+              <img class="avatar" src="images/avatar-4.jpg" alt="Učenica 4" />
+              <div>
+                <strong>Ana</strong>
+                <div style="color:var(--muted); font-size:.9rem;">Konverzacijski</div>
+              </div>
+            </div>
+            <p style="margin:10px 0 0;">„Konačno imam hrabrosti da pričam sa strancima. Časovi su opušteni i korisni.“</p>
+          </article>
+          <article class="testi card" style="background: rgba(21,25,54,.8);">
+            <div style="display:flex; gap:12px; align-items:center;">
+              <img class="avatar" src="images/avatar-1.jpg" alt="Učenik 1" />
+              <div>
+                <strong>Marko</strong>
+                <div style="color:var(--muted); font-size:.9rem;">IELTS 7.5</div>
+              </div>
+            </div>
+            <p style="margin:10px 0 0;">„Posle mesec dana konačno pričam bez blokade. Vežbe su baš praktične.“</p>
+          </article>
+
+       
+          <article class="testi card" style="background: rgba(21,25,54,.8);">
+            <div style="display:flex; gap:12px; align-items:center;">
+              <img class="avatar" src="images/avatar-2.jpg" alt="Učenica 2" />
+              <div>
+                <strong>Jelena</strong>
+                <div style="color:var(--muted); font-size:.9rem;">Business English</div>
+              </div>
+            </div>
+            <p style="margin:10px 0 0;">„Prezentacije na engleskom su mi sada rutina. Dobile smo konkretne fraze za posao.“</p>
+          </article>
+
+      
+          <article class="testi card" style="background: rgba(21,25,54,.8);">
+            <div style="display:flex; gap:12px; align-items:center;">
+              <img class="avatar" src="images/avatar-3.jpg" alt="Učenik 3" />
+              <div>
+                <strong>Filip</strong>
+                <div style="color:var(--muted); font-size:.9rem;">TOEFL</div>
+              </div>
+            </div>
+            <p style="margin:10px 0 0;">„Jasna struktura časa i odličan feedback. Položio sam iz prvog pokušaja.“</p>
+          </article>
+
+    
+          <article class="testi card" style="background: rgba(21,25,54,.8);">
+            <div style="display:flex; gap:12px; align-items:center;">
+              <img class="avatar" src="images/avatar-4.jpg" alt="Učenica 4" />
+              <div>
+                <strong>Ana</strong>
+                <div style="color:var(--muted); font-size:.9rem;">Konverzacijski</div>
+              </div>
+            </div>
+            <p style="margin:10px 0 0;">„Konačno imam hrabrosti da pričam sa strancima. Časovi su opušteni i korisni.“</p>
+          </article>
+        </div>
+      </div>
+      <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:12px;">
+        <button id="prevTesti" class="btn" aria-label="Prethodni utisak">◀</button>
+        <button id="nextTesti" class="btn" aria-label="Sledeći utisak">▶</button>
+      </div>
+    </div>
+  </section> 
+
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="container">
+      <h2 class="section-title">Česta pitanja</h2>
+      <div class="grid" style="grid-template-columns: 1fr 1fr;">
+        <div class="faq-item reveal">
+          <div class="faq-q"><strong>Koliko traje jedan čas?</strong> <span aria-hidden="true">+</span></div>
+          <div class="faq-a">Standardno 60 minuta (45 min za decu). Po potrebi možemo prilagoditi.</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q"><strong>Da li radite online?</strong> <span aria-hidden="true">+</span></div>
+          <div class="faq-a">Da, preko Zoom-a ili Google Meet-a. Materijale dobijaš posle časa.</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q"><strong>Kako se plaća?</strong> <span aria-hidden="true">+</span></div>
+          <div class="faq-a">Plaćanje po času ili u paketima (kartica, uplata, gotovina).</div>
+        </div>
+        <div class="faq-item reveal">
+          <div class="faq-q"><strong>Šta ako moram da otkažem?</strong> <span aria-hidden="true">+</span></div>
+          <div class="faq-a">Otkaži do 24h ranije bez nadoknade. Kasno otkazivanje se naplaćuje.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Kontakt i rezervacija</h2>
+      <p class="section-sub">Popuni formu ili piši direktno na WhatsApp/Viber. Odgovor stiže u najkraćem roku.</p>
+
+      <div class="card contact-card reveal">
+        <form id="contactForm" onsubmit="return handleSubmit(event)" novalidate>
+          <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 12px;">
+            <input required type="text" name="name" placeholder="Ime i prezime" aria-label="Ime i prezime" />
+            <input required type="email" name="email" placeholder="Email" aria-label="Email" />
+          </div>
+          <div class="grid" style="grid-template-columns: 1fr 1fr; gap: 12px; margin-top:12px;">
+            <input type="text" name="goal" placeholder="Cilj (npr. IELTS 6.5, posao)" aria-label="Cilj" />
+            <input type="text" name="preferred" placeholder="Preferirani termini" aria-label="Preferirani termini" />
+          </div>
+          <textarea name="message" placeholder="Kratko opiši šta ti treba…" style="margin-top:12px;"></textarea>
+          <div style="display:flex; gap: 12px; align-items:center; margin-top: 12px; flex-wrap: wrap;">
+            <button class="btn btn-primary" type="submit">Pošalji upit</button>
+            <a class="btn" href="https://wa.me/381631234567" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn" href="viber://chat?number=%2B381631234567">Viber</a>
+            <span style="color:var(--muted); font-size:.95rem;">Ili mail: <a href="mailto:prof.engleski@example.com">prof.engleski@example.com</a></span>
+          </div>
+        </form>
+        <div>
+          <div class="card" style="height:100%; background: linear-gradient(180deg, rgba(124,156,255,.12), rgba(124,156,255,.02));">
+            <h3 style="margin-top:0;">Brza rezervacija</h3>
+            <p class="section-sub" style="margin-top:-6px;">Pošalji poruku sa: <em>ime</em>, <em>cilj</em> i <em>termin</em>.</p>
+            <ul style="color:var(--muted); line-height:1.9; padding-left: 16px;">
+              <li>📍 Online ili Novi Sad / Beograd</li>
+              <li>🕒 Ponedeljak–Petak 09–20h</li>
+              <li>🌐 Srpski / Engleski</li>
+            </ul>
+            <img src="images/map-static.jpg" alt="Mapa lokacije za časove uživo" style="width:100%; border-radius:14px; margin-top:10px;" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; gap: 14px; align-items:center; flex-wrap:wrap;">
+      <div>© <span id="year"></span> [Ime i Prezime]. Sva prava zadržana.</div>
+      <div style="display:flex; gap:12px;">
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Facebook</a>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#contact" class="floating btn btn-primary">Rezerviši termin</a>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn?.addEventListener('click', () => {
+      const isOpen = mobileMenu.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    // Smooth scroll for in-page anchors
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        if (id.length > 1) {
+          e.preventDefault();
+          document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
+          mobileMenu.classList.remove('open');
+          menuBtn.setAttribute('aria-expanded','false');
+        }
+      });
+    });
+
+    // Intersection Observer for reveal animations
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(item => {
+      item.querySelector('.faq-q').addEventListener('click', () => item.classList.toggle('open'));
+    });
+
+    // Testimonials simple carousel
+   /* const track = document.getElementById('testiTrack');
+    const items = Array.from(track.children);
+    let index = 0;
+    function updateCarousel(){
+      const width = items[0].getBoundingClientRect().width + 20; // card + gap
+      track.style.transform = `translateX(${-index * width}px)`;
+    }
+    window.addEventListener('resize', updateCarousel);
+    document.getElementById('prevTesti').addEventListener('click', () => {
+      index = (index - 1 + items.length) % items.length; updateCarousel();
+    });
+    document.getElementById('nextTesti').addEventListener('click', () => {
+      index = (index + 1) % items.length; updateCarousel();
+    });
+    setInterval(() => { index = (index + 1) % items.length; updateCarousel(); }, 6000);
+*/
+
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.getElementById("testiTrack");
+  const slides = document.querySelectorAll(".testi");
+  const prevBtn = document.getElementById("prevTesti");
+  const nextBtn = document.getElementById("nextTesti");
+
+  let index = 0;
+  const slideWidth = slides[0].offsetWidth + 20; // širina + gap
+
+  function updateSlide(animate = true) {
+    if (!animate) {
+      track.style.transition = "none";
+    } else {
+      track.style.transition = "transform 0.4s ease";
+    }
+    track.style.transform = `translateX(${-index * slideWidth}px)`;
+  }
+
+  nextBtn.addEventListener("click", () => {
+    index++;
+    updateSlide();
+
+    if (index === slides.length / 2) {
+      setTimeout(() => {
+        index = 0;
+        updateSlide(false);
+      }, 400); // čekaj kraj animacije
+    }
+  });
+
+  prevBtn.addEventListener("click", () => {
+    if (index === 0) {
+      index = slides.length / 2;
+      updateSlide(false);
+    }
+    setTimeout(() => {
+      index--;
+      updateSlide();
+    }, 20);
+  });
+
+  // auto-play (ako želiš)
+   setInterval(() => nextBtn.click(), 4000);
+});
+
+
+    // Contact form -> mailto compose
+    function handleSubmit(e){
+      e.preventDefault();
+      const data = new FormData(e.target);
+      const name = data.get('name') || '';
+      const email = data.get('email') || '';
+      const goal = data.get('goal') || '';
+      const preferred = data.get('preferred') || '';
+      const message = (data.get('message') || '').toString().replace(/\n/g, '%0D%0A');
+      const subject = encodeURIComponent(`Upit za čas engleskog — ${name}`);
+      const body = encodeURIComponent(`Ime: ${name}\nEmail: ${email}\nCilj: ${goal}\nTermini: ${preferred}\n\nPoruka:\n${message}`);
+      window.location.href = `mailto:prof.engleski@example.com?subject=${subject}&body=${body}`;
+      return false;
+    }
+    window.handleSubmit = handleSubmit;
+  </script>
+</body>
+</html>
